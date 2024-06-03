@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .create-account {
+            text-align: center;
+        }
+        .create-account a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        /* Custom CSS for the "Book Now" button */
+        .btn-book-now {
+            width: 100%;
+            padding: 15px; /* Increase padding to make the button bigger */
+            font-size: 18px; /* Increase font size for better visibility */
+            margin-bottom: 20px; /* Adjust margin bottom to maintain spacing */
+            background-color: #007bff; /* Change background color as needed */
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .btn-book-now:hover {
+            background-color: #0056b3; /* Change hover color as needed */
+        }
+    </style>
+</head>
+<body>
+    {% include 'book_service_modal.html' %}
+    <div class="container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Log In</button> 
+
+            <a href="{% url 'signup' %}" >Create account</a>
+            <div class="form-group">
+                <label for="service">Select Service:</label>
+                <select id="service" name="service" class="form-control" required>
+                    <option value="" disabled selected>Select a service</option>
+                    <option value="Professional Services">Professional Services</option>
+                    <option value="Financial Services">Financial Services</option>
+                    <option value="Marketing and Advertising Services">Marketing and Advertising Services</option>
+                    <option value="Human Resources (HR) Services">Human Resources (HR) Services</option>
+                    <option value="Logistics and Transportation Services">Logistics and Transportation Services</option>
+                    <option value="Healthcare Services">Healthcare Services</option>
+                    <option value="Education and Training Services">Education and Training Services</option>
+                    <option value="Real Estate Services">Real Estate Services</option>
+                    <option value="Construction and Engineering Services">Construction and Engineering Services</option>
+                    <option value="Hospitality and Tourism Services">Hospitality and Tourism Services</option>
+                    <option value="Environmental Services">Environmental Services</option>
+                    <option value="Legal Services">Legal Services</option>
+                    <option value="Customer Support and Call Center Services">Customer Support and Call Center Services</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <!-- Button to open a new form page -->        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bookServiceModal">
+            Book Now
+        </button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
